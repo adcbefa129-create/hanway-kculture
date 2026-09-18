@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HANWAY K-Culture</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,"Malgun Gothic","맑은 고딕",sans-serif;
+  background:#f4f8fc;
+  color:#1f2933;
+}
+button{font-family:inherit;cursor:pointer}
+.app{
+  width:100%;
+  min-height:100vh;
+}
+.header{
+  background:#123b63;
+  color:white;
+  padding:24px 22px 22px;
+}
+.header .brand{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+.header .title{
+  font-size:20px;
+  font-weight:700;
+  margin-top:4px;
+}
+.header .subtitle{
+  font-size:12px;
+  color:#dceaf7;
+  margin-top:5px;
+}
+.container{
+  max-width:900px;
+  margin:0 auto;
+  padding:24px 18px 36px;
+}
+.home-hero{text-align:center}
+.home-hero h1{
+  color:#123b63;
+  font-size:25px;
+  margin:4px 0 5px;
+}
+.home-hero p{
+  color:#667788;
+  margin:0;
+  font-size:14px;
+}
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:28px;
+}
+.menu-card{
+  background:white;
+  border:1px solid #d5e2ed;
+  padding:24px 18px;
+  min-height:145px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(18,59,99,.04);
+}
+.menu-card h2{
+  color:#123b63;
+  font-size:17px;
+  margin:0 0 8px;
+}
+.menu-card p{
+  color:#667788;
+  font-size:13px;
+  line-height:1.55;
+  white-space:pre-line;
+  margin:0 0 13px;
+}
+.primary{
+  background:#2d6fa3;
+  color:white;
+  border:0;
+  padding:9px 17px;
+  font-weight:700;
+  font-size:12px;
+}
+.primary:active{background:#123b63}
+.back{
+  background:white;
+  color:#123b63;
+  border:1px solid #d5e2ed;
+  padding:8px 16px;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:22px;
+}
+.page-title{
+  text-align:center;
+  color:#123b63;
+  font-size:23px;
+  margin:8px 0 5px;
+}
+.page-desc{
+  text-align:center;
+  color:#667788;
+  font-size:13px;
+  margin:0 0 25px;
+}
+.choices{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  justify-content:center;
+  margin-bottom:24px;
+}
+.choice{
+  background:white;
+  color:#123b63;
+  border:1px solid #d5e2ed;
+  padding:12px 18px;
+  font-weight:700;
+  font-size:12px;
+}
+.choice:active{background:#e7f1fa}
+.card{
+  background:white;
+  border:1px solid #d5e2ed;
+  padding:28px 22px;
+  max-width:700px;
+  margin:0 auto;
+  text-align:center;
+}
+.card .eyebrow{
+  color:#2d6fa3;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+.card h2{
+  color:#123b63;
+  font-size:31px;
+  margin:7px 0 2px;
+}
+.card h3{
+  font-size:14px;
+  margin:0 0 9px;
+}
+.card p{
+  color:#667788;
+  font-size:13px;
+  line-height:1.7;
+}
+.info{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+  flex-wrap:wrap;
+  color:#667788;
+  font-size:12px;
+  margin-top:18px;
+}
+.list{
+  max-width:700px;
+  margin:0 auto;
+}
+.music-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:white;
+  border:1px solid #d5e2ed;
+  padding:13px 14px;
+  margin:8px 0;
+}
+.artist{
+  width:105px;
+  flex-shrink:0;
+  color:#123b63;
+  font-weight:800;
+  font-size:13px;
+}
+.song{
+  flex:1;
+  font-size:13px;
+}
+.food-card{
+  max-width:700px;
+  margin:0 auto;
+  background:white;
+  border:1px solid #d5e2ed;
+  text-align:center;
+  padding:30px 20px;
+}
+.food-card h2{font-size:30px;color:#123b63;margin:0 0 4px}
+.food-card .eng{color:#2d6fa3;font-weight:800;font-size:12px}
+.food-card p{line-height:1.7;color:#667788;font-size:13px}
+.photo-list{
+  max-width:650px;
+  margin:0 auto;
+}
+.photo-item{
+  display:flex;
+  align-items:center;
+  background:white;
+  border:1px solid #d5e2ed;
+  padding:16px;
+  margin:8px 0;
+}
+.number{
+  color:#2d6fa3;
+  font-weight:800;
+  width:35px;
+}
+.footer{
+  text-align:center;
+  color:#667788;
+  font-size:10px;
+  margin-top:32px;
+}
+.notice{
+  text-align:center;
+  color:#667788;
+  font-size:11px;
+  margin-top:20px;
+}
+@media(max-width:650px){
+  .header{padding:20px 18px}
+  .header .brand{font-size:25px}
+  .header .title{font-size:18px}
+  .container{padding:20px 14px 30px}
+  .menu{
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:22px;
+  }
+  .menu-card{min-height:132px;padding:21px 15px}
+  .home-hero h1{font-size:23px}
+  .page-title{font-size:21px}
+  .choices{gap:7px}
+  .choice{padding:11px 13px}
+  .card{padding:24px 16px}
+  .card h2{font-size:28px}
+  .music-row{padding:12px 10px}
+  .artist{width:78px;font-size:12px}
+  .song{font-size:12px}
+  .primary{padding:8px 11px;font-size:10px}
+}
+</style>
+</head>
+
+<body>
+<div id="app" class="app"></div>
+
+<script>
+const app = document.getElementById("app");
+
+const tripData = {
+  "K-POP":{
+    title:"K-POP TOUR", place:"SEOUL",
+    description:"K-POP과 함께 서울의 다양한 문화 공간을 경험해보세요.",
+    course:"홍대 → 성수 → 한강",
+    tip:"음악과 패션, 카페 문화를 함께 즐기고 싶다면 서울을 추천해요."
+  },
+  "K-FOOD":{
+    title:"K-FOOD TOUR", place:"JEONJU",
+    description:"한국의 전통 음식과 지역 문화를 직접 경험해보세요.",
+    course:"전주한옥마을 → 전주비빔밥 → 남부시장",
+    tip:"한국 음식을 다양하게 경험하고 싶다면 전주가 좋은 선택이에요."
+  },
+  "CITY":{
+    title:"CITY TOUR", place:"SEOUL",
+    description:"한국의 전통과 현대적인 도시 문화를 동시에 만나보세요.",
+    course:"경복궁 → 명동 → 성수",
+    tip:"전통적인 한국과 현대적인 한국을 한 번에 경험할 수 있어요."
+  },
+  "NATURE":{
+    title:"NATURE TOUR", place:"JEJU",
+    description:"한국의 자연환경과 아름다운 풍경을 느껴보세요.",
+    course:"성산일출봉 → 해안도로 → 한라산",
+    tip:"자연과 여유로운 여행을 좋아한다면 제주를 추천해요."
+  },
+  "PHOTO":{
+    title:"PHOTO TOUR", place:"SEOUL",
+    description:"한국의 전통적인 풍경부터 도시의 야경까지 사진으로 남겨보세요.",
+    course:"북촌한옥마을 → 남산 → 한강",
+    tip:"한국의 전통과 현대적인 모습을 모두 사진에 담을 수 있어요."
+  }
+};
+
+const musicData = {
+  "K-POP STARTER":[
+    ["BTS","Dynamite","https://www.youtube.com/watch?v=gdZLi9oWNZg"],
+    ["BLACKPINK","DDU-DU DDU-DU","https://www.youtube.com/watch?v=IHNzOHi8sJs"],
+    ["TWICE","What Is Love?","https://www.youtube.com/watch?v=i0p1bmr0EmE"]
+  ],
+  "NEW GENERATION":[
+    ["NewJeans","Hype Boy","https://www.youtube.com/watch?v=11cta61wi0g"],
+    ["IVE","LOVE DIVE","https://www.youtube.com/watch?v=Y8JFxS1HlDo"],
+    ["aespa","Supernova","https://www.youtube.com/watch?v=phuiiNCxRMg"]
+  ],
+  "RESCENE PICK":[
+    ["RESCENE","LOVE ATTACK","https://www.youtube.com/watch?v=9XttLI0oH0I"],
+    ["RESCENE","Pretty Girl","https://www.youtube.com/results?search_query=RESCENE+Pretty+Girl+official"],
+    ["RESCENE","Bloom","https://www.youtube.com/results?search_query=RESCENE+Bloom+official"],
+    ["RESCENE","Runaway","https://www.youtube.com/results?search_query=RESCENE+Runaway+official"]
+  ]
+};
+
+const foodData = {
+  "BIBIMBAP":{
+    korean:"비빔밥", taste:"고소함 + 매콤함", region:"전주",
+    description:"밥과 여러 가지 채소, 고기 등을 함께 비벼 먹는 한국 음식입니다."
+  },
+  "BULGOGI":{
+    korean:"불고기", taste:"달콤함 + 짭짤함", region:"전국",
+    description:"얇게 썬 소고기를 양념하여 구워 먹는 한국의 대표적인 음식입니다."
+  },
+  "TTEOKBOKKI":{
+    korean:"떡볶이", taste:"매콤달콤", region:"서울",
+    description:"쌀떡을 매콤달콤한 양념에 넣어 조리한 대표적인 한국 길거리 음식입니다."
+  },
+  "KIMCHI":{
+    korean:"김치", taste:"매콤함 + 새콤함", region:"전국",
+    description:"채소를 소금에 절이고 양념하여 발효시킨 한국의 대표적인 음식입니다."
+  }
+};
+
+const photoData = {
+  "TRADITION":["경복궁","북촌한옥마을","인사동"],
+  "CITY":["성수","홍대","한강"],
+  "NATURE":["제주","남산","강릉 해변"],
+  "NIGHT":["남산서울타워","한강 야경","서울 도심 야경"]
+};
+
+function header(title, subtitle){
+  return `
+  <div class="header">
+    <div class="brand">HANWAY</div>
+    <div class="title">${title}</div>
+    <div class="subtitle">${subtitle}</div>
+  </div>`;
+}
+
+function back(){
+  return `<button class="back" onclick="home()">← HOME</button>`;
+}
+
+function home(){
+  app.innerHTML = `
+    ${header("K-CULTURE ONBOARD","Your Korean journey starts on board.")}
+    <div class="container">
+      <div class="home-hero">
+        <h1>WELCOME TO KOREA</h1>
+        <p>기내에서 미리 만나는 한국의 문화와 여행</p>
+      </div>
+
+      <div class="menu">
+        <div class="menu-card">
+          <h2>MY KOREA TRIP</h2>
+          <p>관심사에 맞는
+한국 여행 추천</p>
+          <button class="primary" onclick="trip()">START →</button>
+        </div>
+        <div class="menu-card">
+          <h2>HANWAY MUSIC</h2>
+          <p>K-POP 아티스트와
+음악 정보</p>
+          <button class="primary" onclick="music()">START →</button>
+        </div>
+        <div class="menu-card">
+          <h2>K-FOOD GUIDE</h2>
+          <p>한국 음식과
+기내식 알아보기</p>
+          <button class="primary" onclick="food()">START →</button>
+        </div>
+        <div class="menu-card">
+          <h2>K-PHOTO SPOT</h2>
+          <p>한국의 아름다운
+사진 명소</p>
+          <button class="primary" onclick="photo()">START →</button>
+        </div>
+      </div>
+
+      <div class="footer">HANWAY AIRLINES • K-CULTURE EXPERIENCE</div>
+    </div>`;
+}
+
+function trip(){
+  app.innerHTML = `
+    ${header("MY KOREA TRIP","Choose your interest and discover Korea.")}
+    <div class="container">
+      ${back()}
+      <h1 class="page-title">어떤 여행을 원하시나요?</h1>
+      <p class="page-desc">관심사를 선택하면 HANWAY가 여행지를 추천해드립니다.</p>
+      <div class="choices">
+        ${Object.keys(tripData).map(x=>`<button class="choice" onclick="tripResult('${x}')">${x}</button>`).join("")}
+      </div>
+      <div id="tripResult"></div>
+    </div>`;
+}
+
+function tripResult(key){
+  const d=tripData[key];
+  document.getElementById("tripResult").innerHTML=`
+    <div class="card">
+      <div class="eyebrow">HANWAY RECOMMENDS</div>
+      <h2>${d.place}</h2>
+      <h3>${d.title}</h3>
+      <p>${d.description}</p>
+      <p><strong>추천 코스</strong><br>${d.course}</p>
+      <p><strong>TIP</strong><br>${d.tip}</p>
+    </div>`;
+}
+
+function music(){
+  app.innerHTML=`
+    ${header("HANWAY MUSIC","Discover K-POP before you arrive.")}
+    <div class="container">
+      ${back()}
+      <h1 class="page-title">K-POP MUSIC GUIDE</h1>
+      <p class="page-desc">원하는 음악을 선택하고 공식 영상을 감상해보세요.</p>
+      <div class="choices">
+        ${Object.keys(musicData).map(x=>`<button class="choice" onclick="musicList('${x}')">${x}</button>`).join("")}
+      </div>
+      <div id="musicList"></div>
+      <div class="notice">▶ WATCH 버튼을 누르면 YouTube에서 영상을 감상할 수 있습니다.</div>
+    </div>`;
+}
+
+function musicList(category){
+  document.getElementById("musicList").innerHTML=`
+    <div class="list">
+      ${musicData[category].map(m=>`
+        <div class="music-row">
+          <div class="artist">${m[0]}</div>
+          <div class="song">${m[1]}</div>
+          <button class="primary" onclick="window.open('${m[2]}','_blank')">▶ WATCH</button>
+        </div>`).join("")}
+    </div>`;
+}
+
+function food(){
+  app.innerHTML=`
+    ${header("K-FOOD GUIDE","Taste Korea before you land.")}
+    <div class="container">
+      ${back()}
+      <h1 class="page-title">WHAT WOULD YOU LIKE TO KNOW?</h1>
+      <p class="page-desc">한국 음식 하나를 선택해보세요.</p>
+      <div class="choices">
+        ${Object.keys(foodData).map(x=>`<button class="choice" onclick="foodResult('${x}')">${x}</button>`).join("")}
+      </div>
+      <div id="foodResult"></div>
+    </div>`;
+}
+
+function foodResult(key){
+  const d=foodData[key];
+  document.getElementById("foodResult").innerHTML=`
+    <div class="food-card">
+      <h2>${d.korean}</h2>
+      <div class="eng">${key}</div>
+      <p>${d.description}</p>
+      <div class="info">
+        <span>맛&nbsp; ${d.taste}</span>
+        <span>대표 지역&nbsp; ${d.region}</span>
+      </div>
+      <p style="color:#2d6fa3;font-weight:800">HANWAY K-MEAL</p>
+    </div>`;
+}
+
+function photo(){
+  app.innerHTML=`
+    ${header("K-PHOTO SPOT","Find your perfect Korean photo spot.")}
+    <div class="container">
+      ${back()}
+      <h1 class="page-title">WHERE DO YOU WANT TO TAKE A PHOTO?</h1>
+      <p class="page-desc">원하는 분위기를 선택해보세요.</p>
+      <div class="choices">
+        ${Object.keys(photoData).map(x=>`<button class="choice" onclick="photoList('${x}')">${x}</button>`).join("")}
+      </div>
+      <div id="photoList"></div>
+    </div>`;
+}
+
+function photoList(category){
+  document.getElementById("photoList").innerHTML=`
+    <div class="photo-list">
+      ${photoData[category].map((p,i)=>`
+        <div class="photo-item">
+          <div class="number">${i+1}</div>
+          <div><strong>${p}</strong></div>
+        </div>`).join("")}
+    </div>
+    <div class="notice">✦ HANWAY PHOTO RECOMMENDATIONS</div>`;
+}
+
+home();
+</script>
+</body>
+</html>
